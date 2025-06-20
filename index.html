@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Delights - World Dessert Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B9D; /* Vibrant pink */
+            --primary-light: #FFF0F5; /* Light pink */
+            --secondary: #D6A3DC; /* Light purple */
+            --dark: #5E2A84; /* Deep purple */
+            --light: #FFF9FB; /* Pinkish white */
+            --gold: #FFC2D1; /* Pink gold */
+            --success: #A8E6CF; /* Mint green */
+            --china-red: #FF9AA2; /* Pinkish red */
+            --korea-blue: #B5EAD7; /* Light aqua */
+            --arabia-green: #E2F0CB; /* Light green */
+            --pink: #FF9BB3; /* Bright pink */
+            --purple: #C7B3FF; /* Soft purple */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 75px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover img {
+            transform: rotate(15deg);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+.nav-hearts {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    pointer-events: none;
+}
+
+.heart-decoration {
+    position: absolute;
+    font-size: 12px;
+    opacity: 0.7;
+    animation: float 4s infinite;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));
+}
+
+.heart-decoration.pink {
+    color: #FF9BB3;
+}
+
+.heart-decoration.purple {
+    color: #C7B3FF;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(var(--rotate-angle));
+    }
+    50% {
+        transform: translateY(-8px) rotate(var(--rotate-angle));
+    }
+}
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('World_Dessert_Treasures.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 12rem 5% 6rem;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 5rem 5%;
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .category-link:hover {
+            color: var(--gold);
+        }
+
+        /* Desserts Section */
+        .desserts {
+            padding: 5rem 5%;
+            background-color: var(--primary-light);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.8rem;
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .desserts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .dessert-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .dessert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dessert-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .dessert-content {
+            padding: 1.5rem;
+        }
+
+        .dessert-origin {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .arabic {
+            background-color: #FFE6F0;
+            color: var(--primary);
+        }
+
+        .western {
+            background-color: #F0E6FF;
+            color: var(--purple);
+        }
+
+        .chinese {
+            background-color: #FFE6E6;
+            color: var(--china-red);
+        }
+
+        .korean {
+            background-color: #E6FFF2;
+            color: #2A8463;
+        }
+
+        .dessert-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .dessert-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .dessert-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dessert-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #E04F7A;
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 5rem 5%;
+            background-color: white;
+        }
+
+        .featured-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .featured-content p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .featured-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary), #E04F7A);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 1rem 1.5rem;
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #4A1D6B;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-about p {
+            color: #D6C2E6;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #D6C2E6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #D6C2E6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .featured-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .featured-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 50px;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 5%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .featured-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+           <div class="logo"> 
+               <img src="logo.jpg" alt="Global Delights Logo">
+               <span class="logo-text">Global Delights</span>
+           </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a>
+					<div class="nav-hearts">
+						<i class="fas fa-heart heart-nav-pink"></i>
+						<i class="fas fa-heart heart-nav-purple"></i>
+					</div>
+				</li>
+                    <li><a href="#categories" class="nav-link">Categories</a>
+					<div class="nav-hearts">
+						<i class="fas fa-heart heart-nav-pink"></i>
+						<i class="fas fa-heart heart-nav-purple"></i>
+					</div>
+				</li>
+                    <li><a href="#desserts" class="nav-link">Desserts</a>
+					<div class="nav-hearts">
+						<i class="fas fa-heart heart-nav-pink"></i>
+						<i class="fas fa-heart heart-nav-purple"></i>
+					</div>
+				</li>
+                    <li><a href="#featured" class="nav-link">Featured</a>
+					<div class="nav-hearts">
+						<i class="fas fa-heart heart-nav-pink"></i>
+						<i class="fas fa-heart heart-nav-purple"></i>
+					</div>
+				</li>
+                    <li><a href="#contact" class="nav-link">Contact</a>
+					<div class="nav-hearts">
+						<i class="fas fa-heart heart-nav-pink"></i>
+						<i class="fas fa-heart heart-nav-purple"></i>
+					</div>
+				</li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover World Dessert Treasures</h1>
+            <p>Explore authentic sweet delicacies from around the globe, from Middle Eastern baklava to Chinese mooncakes and French pastries.</p>
+            <div class="hero-buttons">
+                <a href="#desserts" class="btn btn-primary">Explore Desserts</a>
+                <a href="#featured" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <h2 class="section-title">Dessert Categories</h2>
+            <p class="section-subtitle">Browse our collection of world desserts organized by region and culture</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="Arabic_Desserts.jpg" alt="Arabic Desserts" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Arabic Desserts</h3>
+                    <a href="#arabic" class="category-link">
+                        Explore Collection <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="Western_Desserts.jpg" alt="Western Desserts" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Western Desserts</h3>
+                    <a href="#western" class="category-link">
+                        Explore Collection <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="Chinese_Desserts.jpg" alt="Chinese Desserts" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Chinese Desserts</h3>
+                    <a href="#chinese" class="category-link">
+                        Explore Collection <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="Korean_Desserts.jpg" alt="Korean Desserts" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Korean Desserts</h3>
+                    <a href="#korean" class="category-link">
+                        Explore Collection <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desserts Section -->
+    <section class="desserts" id="desserts">
+        <div class="section-header">
+            <h2 class="section-title">Our Dessert Collection</h2>
+            <p class="section-subtitle">Browse and order authentic desserts from around the world</p>
+        </div>
+        
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="arabic">Arabic</button>
+            <button class="tab-btn" data-tab="western">Western</button>
+            <button class="tab-btn" data-tab="chinese">Chinese</button>
+            <button class="tab-btn" data-tab="korean">Korean</button>
+        </div>
+        
+        <!-- Arabic Desserts -->
+        <div class="tab-content active" id="arabic">
+            <div class="desserts-grid">
+                <div class="dessert-card">
+                    <img src="Baklava.jpg" alt="Baklava" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin arabic">Arabic</span>
+                        <h3 class="dessert-title">Baklava</h3>
+                        <p class="dessert-description">Layers of flaky phyllo dough filled with chopped nuts and sweetened with honey syrup.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$8.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Kunafa.jpg" alt="Kunafa" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin arabic">Arabic</span>
+                        <h3 class="dessert-title">Kunafa</h3>
+                        <p class="dessert-description">Shredded phyllo pastry filled with sweet cheese or cream, soaked in sugar syrup.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$9.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Basbousa.jpg" alt="Basbousa" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin arabic">Arabic</span>
+                        <h3 class="dessert-title">Basbousa</h3>
+                        <p class="dessert-description">Semolina cake soaked in sweet syrup, often flavored with coconut or rose water.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$6.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Ma'amoul.jpg" alt="Ma'amoul" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin arabic">Arabic</span>
+                        <h3 class="dessert-title">Ma'amoul</h3>
+                        <p class="dessert-description">Date-filled shortbread cookies traditionally made during festive occasions.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$12.99/dozen</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Western Desserts -->
+        <div class="tab-content" id="western">
+            <div class="desserts-grid">
+                <div class="dessert-card">
+                    <img src="Tiramisu.jpg" alt="Tiramisu" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin western">Western</span>
+                        <h3 class="dessert-title">Tiramisu</h3>
+                        <p class="dessert-description">Italian dessert made of ladyfingers dipped in coffee, layered with mascarpone cream.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$7.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Crème Brûlée.jpg" alt="Crème Brûlée" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin western">Western</span>
+                        <h3 class="dessert-title">Crème Brûlée</h3>
+                        <p class="dessert-description">Rich custard topped with a layer of hardened caramelized sugar.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$8.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Chocolate Soufflé.jpg" alt="Chocolate Soufflé" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin western">Western</span>
+                        <h3 class="dessert-title">Chocolate Soufflé</h3>
+                        <p class="dessert-description">Light, airy baked dessert made with egg yolks and whipped egg whites with chocolate.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$9.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="New York Cheesecake.jpg" alt="New York Cheesecake" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin western">Western</span>
+                        <h3 class="dessert-title">New York Cheesecake</h3>
+                        <p class="dessert-description">Dense, creamy cheesecake with a graham cracker crust, served with berry compote.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$6.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chinese Desserts -->
+        <div class="tab-content" id="chinese">
+            <div class="desserts-grid">
+                <div class="dessert-card">
+                    <img src="Mooncake.jpg" alt="Mooncake" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin chinese">Chinese</span>
+                        <h3 class="dessert-title">Mooncake</h3>
+                        <p class="dessert-description">Traditional pastry filled with sweet bean paste or lotus seed paste, often with salted egg yolk.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$4.99 each</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Red Bean Soup.jpg" alt="Red Bean Soup" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin chinese">Chinese</span>
+                        <h3 class="dessert-title">Red Bean Soup</h3>
+                        <p class="dessert-description">Sweet soup made from azuki beans, often served with glutinous rice balls.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$5.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Seasms Balls.jpg" alt="Sesame Balls" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin chinese">Chinese</span>
+                        <h3 class="dessert-title">Sesame Balls</h3>
+                        <p class="dessert-description">Deep-fried glutinous rice balls filled with sweet paste and coated with sesame seeds.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$7.99/6 pieces</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Egg Tarts.jpg" alt="Egg Tarts" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin chinese">Chinese</span>
+                        <h3 class="dessert-title">Egg Tarts</h3>
+                        <p class="dessert-description">Flaky pastry shells filled with sweet egg custard, a classic dim sum dessert.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$8.99/4 pieces</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Korean Desserts -->
+        <div class="tab-content" id="korean">
+            <div class="desserts-grid">
+                <div class="dessert-card">
+                    <img src="Bingsu.jpg" alt="Bingsu" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin korean">Korean</span>
+                        <h3 class="dessert-title">Bingsu</h3>
+                        <p class="dessert-description">Shaved ice dessert with sweet toppings like red bean, fruit, or condensed milk.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$8.99</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Hotteok.jpg" alt="Hotteok" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin korean">Korean</span>
+                        <h3 class="dessert-title">Hotteok</h3>
+                        <p class="dessert-description">Sweet Korean pancakes filled with brown sugar, honey, and chopped nuts.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$5.99/3 pieces</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Yakgwa.png" alt="Yakgwa" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin korean">Korean</span>
+                        <h3 class="dessert-title">Yakgwa</h3>
+                        <p class="dessert-description">Traditional honey cookies made with wheat flour, sesame oil, and ginger juice.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$10.99/box</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dessert-card">
+                    <img src="Chapssal Donuts.jpg" alt="Chapssal Donuts" class="dessert-image">
+                    <div class="dessert-content">
+                        <span class="dessert-origin korean">Korean</span>
+                        <h3 class="dessert-title">Chapssal Donuts</h3>
+                        <p class="dessert-description">Chewy glutinous rice donuts filled with sweet red bean paste.</p>
+                        <div class="dessert-meta">
+                            <span class="dessert-price">$6.99/4 pieces</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured" id="featured">
+        <div class="section-header">
+            <h2 class="section-title">Featured Dessert of the Month</h2>
+            <p class="section-subtitle">Each month we highlight a special dessert from around the world</p>
+        </div>
+        
+        <div class="featured-container">
+            <div class="featured-image">
+                <img src="Rainbow Macarons.jpg" alt="Featured Dessert">
+            </div>
+            
+            <div class="featured-content">
+                <h2>Rainbow Macarons</h2>
+                <p>This month we're featuring these delightful French macarons with a rainbow of flavors. Each color represents a different taste sensation - from tangy raspberry to rich chocolate and refreshing mint.</p>
+                <p>Macarons have been a French delicacy since the 16th century and have become a worldwide phenomenon. Try our limited-time special assortment box!</p>
+                
+                <div class="featured-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,500+</div>
+                        <div class="stat-label">Sold This Month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>Join Our Sweet Community</h2>
+        <p>Subscribe to our newsletter for exclusive dessert recipes, special offers, and cultural insights about world desserts.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Global Delights Logo">
+                    <span class="footer-logo-text">Global Delights</span>
+                </div>
+                <p>Discovering and sharing the world's most delightful desserts since 2010. We bring authentic sweet treats from every corner of the globe to your table.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#desserts">Desserts</a></li>
+                    <li><a href="#featured">Featured</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Dessert Types</h3>
+                <ul>
+                    <li><a href="#arabic">Arabic Desserts</a></li>
+                    <li><a href="#western">Western Desserts</a></li>
+                    <li><a href="#chinese">Chinese Desserts</a></li>
+                    <li><a href="#korean">Korean Desserts</a></li>
+                    <li><a href="#">All Collections</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>123 Sweet Street, Dessert Valley</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@globaldelights.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Global Delights. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for dessert lovers</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu.style.display === 'flex') {
+                        navMenu.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add to cart functionality
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const dessertCard = this.closest('.dessert-card');
+                const dessertName = dessertCard.querySelector('.dessert-title').textContent;
+                const dessertPrice = dessertCard.querySelector('.dessert-price').textContent;
+                
+                alert(`Added ${dessertName} (${dessertPrice}) to your cart!`);
+                
+                // Animation feedback
+                this.textContent = 'Added!';
+                this.style.backgroundColor = 'var(--success)';
+                
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.backgroundColor = 'var(--primary)';
+                }, 1500);
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('.newsletter-input');
+                alert(`Thank you for subscribing with ${emailInput.value}! You'll receive our next newsletter soon.`);
+                emailInput.value = '';
+            });
+        }
+
+        // Responsive navigation adjustment
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initialize
+
+	 </script>
+<script>
+	 document.querySelectorAll('.nav-menu li').forEach(item => {
+	     const heartCount = Math.floor(Math.random() * 9) + 8; 
+	     
+	     for (let i = 0; i < heartCount; i++) {
+	         const heart = document.createElement('i');
+			 const heartsContainer = item.querySelector('.nav-hearts');
+	         heart.className = `heart-decoration ${Math.random() > 0.5 ? 'pink' : 'purple'}`;
+			 heart.innerHTML = '❤';
+	         
+	         
+	         heart.style.setProperty('--rotate-angle', `${Math.random() * 30 - 15}deg`);
+	         heart.style.left = `${Math.random() * 100}%`;
+	         heart.style.top = `${Math.random() * 20}px`;
+	         heart.style.animationDelay = `${Math.random() * 2}s`;
+	         heart.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+	         
+	         heartsContainer.appendChild(heart);
+	     }
+	 });
+	 </script>
+</body>
+</html>
